@@ -1,0 +1,31 @@
+{
+    "status": true,
+    "items":
+    [
+         {
+            "id": 6,
+            "name": "Rabbit Six",
+            "image": "/images/rabbits/rabbit_001.jpg"
+        },
+        {
+            "id": 1,
+            "name": "Rabbit Two",
+            "image": "/images/rabbits/rabbit_002.jpg"
+        },
+        {
+            "id": 2,
+            "name": "Rabbit Three",
+            "image": "/images/rabbits/rabbit_003.jpg"
+        },
+        {
+            "id": 3,
+            "name": "Rabbit Four",
+            "image": "/images/rabbits/rabbit_004.jpg"
+        },
+        {
+            "id": 4,
+            "name": "Rabbit Five",
+            "image": "/images/rabbits/rabbit_005.jpg"
+        }
+    ]
+}

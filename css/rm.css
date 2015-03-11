@@ -1,0 +1,23 @@
+#jumbotrons_holder {
+  width: 900px;
+  margin: 0 auto;
+}
+
+.code-sample {
+  font-weight: bold;
+  color: #c0392b;
+  padding: 16px;
+  font-size: 22px;
+}
+
+.footnote {
+  font-size:11px;
+}
+
+.nagisa-body h3 {
+	padding-top: 20px;
+}
+
+#make_jumbotron_button {
+	cursor: pointer;
+}

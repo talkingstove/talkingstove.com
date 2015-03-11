@@ -1,0 +1,161 @@
+.jumbotron_list {
+	position: absolute;
+  padding: 0 !important;
+}
+
+.jumbotron_back_button {
+	position: absolute;
+	left: 10px;
+	top: 42%;
+	z-index: 60;
+	cursor: pointer;
+}
+
+.jumbotron_forward_button {
+	position: absolute;
+	right: 10px;
+	top: 42%;
+	z-index: 60;
+	cursor: pointer;
+}
+
+.jumbotron_thumb_li {
+	margin: 0 !important;
+	width: 24px;
+	float: left;
+    overflow: hidden;
+}
+
+.jumbotron_thumbs_list {
+	margin: 0 !important;
+  padding: 0 !important;
+	float: left;
+  list-style: none outside none;
+}
+
+.jumbotron_carousel_wrapper {
+	background-position: center center;
+    height: 360px;
+    position: relative;
+}
+.jumbotron_list_holder {
+    height: 360px;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+
+  	overflow: hidden;
+  	margin: 0 auto;
+}
+
+.jumbotron_carousel_thumbs {
+  height: 0;
+  margin: 0 auto;
+  position: relative;
+  width: 950px;
+  z-index: 59;
+}
+
+.jumbotron_carousel_thumbs_positioner {
+  bottom: 88px;
+  position: absolute;
+  right: 90px;
+  width: 230px;
+  text-align: center;
+}
+
+.jumbotron_carousel_thumbs_centerer {
+  margin: 0 auto;
+  /*width set by js*/
+}
+
+#auditorium_jumbotron_target {
+	height: 360px;
+}
+
+.jumbotron_scrim_area {
+  height: 230px;
+  position: absolute;
+  right: 40px;
+  top: 0;
+  width: 230px;
+}
+
+.jumbotron_li {
+	float: left;
+	overflow: hidden;
+}
+
+.jumbotron_scrim_centerer {
+    margin: 0px auto;
+    position: relative;
+    width: 950px;
+}
+
+.jumbotron_scrim_image_holder {
+    margin: 10px;
+    text-align: center;
+}
+
+.jumbotron_scrim_image {
+    max-height: 90px;
+    max-width: 210px;
+}
+
+.jumbotron_scrim_body {
+    font-size: 12px;
+    margin: 0px 20px;
+    color: #fff;
+}
+
+.jumbotron_scrim_button_holder {
+    bottom: 30px;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+}
+
+.jumbotron_thumb_li {
+	 cursor: pointer;
+    color: #fff;
+    font-size: 35px;
+    height: 30px;
+    line-height: 36px;
+    margin-left: 8px;
+ }
+
+.jumbotron_thumb_li.highlighted {
+	color: #1ABC9C;
+   font-size: 35px;
+}
+
+.jumbotron_scrim_bottom_shadow {
+  position: absolute;
+  bottom: -20px;
+  left: -4px;
+  width: 238px;
+  height: 20px;
+  background:image-url("auditorium/jumbotron/textbox_shadow.png") center top no-repeat;
+}
+
+.jumbotron_button {
+  color: #fff;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.jumbotron_button, .jumbotron_button:hover {
+  text-decoration: none;
+}
+
+.jumbotron_button_scrim {
+  width: 150px;
+  margin: 0 auto;
+}
+
+
+
+
+
+
+
