@@ -57,6 +57,12 @@ RM.Portfolio.jsonToHtmlDemo = function() {
 		templateName: 'test_json_template'
 	});
 
+	/*
+	* in six lines we...
+	* make an ajax call and handle success or failure
+	* check the client/server agreement to make sure proper structure was returned or else highlight exact failure
+	* process successfully received data, put it into html form via templates, and add to DOM
+	*/
 	N.Ajax.makeAjaxCall({
 		type: 'GET',
 		url: '/data/test-data.php?page=1',

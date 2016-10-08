@@ -44,6 +44,7 @@ N.Agreements.testAgreement = function(agreement, ajaxResult) {
 			i++;
 		});	
 	}
+	//TODO: is else case even necessary???
 
 	console.log('failures:', failureMessages);
 
@@ -55,20 +56,20 @@ N.Agreements.testAgreement = function(agreement, ajaxResult) {
 	//subfunction - called recursively if object
 	//TODO: test inside of arrays using mock-sub-objects
 	function testObjectStructure(objectToTest, structureToMatch, indexOfItemTested) {
-		_.each(structureToMatch, function(dataTypeToMatch, name) {
-			if ( _.isObject(dataTypeToMatch) ) { //an actual object, not the name of a data type like others!
-				if ( !objectToTest[name] ) { //check if subobje exists
+		_.each(structureToMatch, function(dataTypeToMatchOrSubobject, name) {
+			if ( _.isObject(dataTypeToMatchOrSubobject) ) { //an actual object, not the name of a data type like others!
+				if ( !objectToTest[name] ) { //check if subobject exists
 					failureMessages.push('Bad structure: cant find subobject ' + name);
 					return;
 				}
 
-				testObjectStructure(objectToTest[name], dataTypeToMatch, indexOfItemTested); //will this work on nested objs? maybe
+				testObjectStructure(objectToTest[name], dataTypeToMatchOrSubobject, indexOfItemTested); //will this work on nested objs? maybe
 			}
 			else {
-				var result = N.Utils.testDataType(objectToTest[name], dataTypeToMatch);
+				var result = N.Utils.testDataType(objectToTest[name], dataTypeToMatchOrSubobject);
 
 				if (!result) {
-					failureMessages.push('Bad structure: ' + objectToTest[name] + ' was expected to be: ' + dataTypeToMatch + ' in tested item ' + indexOfItemTested);
+					failureMessages.push('Bad structure: ' + objectToTest[name] + ' was expected to be: ' + dataTypeToMatchOrSubobject + ' in tested item ' + indexOfItemTested);
 				}
 			}
 		});
