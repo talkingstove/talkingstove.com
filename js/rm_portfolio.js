@@ -60,9 +60,16 @@ RM.Portfolio.jsonToHtmlDemo = function() {
 	N.Ajax.makeAjaxCall({
 		type: 'GET',
 		url: '/data/test-data.php?page=1',
-		jsonToHtmlHandlers: [sample_handler]	
+		jsonToHtmlHandlers: [sample_handler],
+		dataAgreements: [N.Agreements.Library.sample_data_agreement]
 	});
 }			
+
+
+
+
+
+
 
 
 			   

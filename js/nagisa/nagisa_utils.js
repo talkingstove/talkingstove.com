@@ -1,4 +1,37 @@
 N.Utils = N.Utils || {};
+N.Agreements = N.Agreements || {};
+
+N.Agreements.Library = {
+	'sample_data_agreement': {
+		'objectRoot': {
+			path: 'items',
+			dataType: 'array',
+			dataItemStructure: {
+        "id": "number",
+        "name": "string",
+        "image": "string",
+        "mock": {
+        	"alpha": "array",
+        	"beta": "number",
+        	"gamma": "string"
+        }
+	    }
+		}
+	}
+}
+
+N.Agreements.testAgreement = function(agreement, ajaxResult) {
+	var failureMessages = [];
+
+	//see if the main data object is where and what it should be
+
+
+
+	return {
+		doesAgreementPass: !(failureMessages.length),
+		failureMessages: failureMessages
+	}
+}
 
 N.compileTemplate = function(templateName, data, callingMethod, templateLanguage) {
 	var templateLanguage = templateLanguage || N.defaultTemplateLanguage;

@@ -14,6 +14,7 @@ N.Ajax.makeAjaxCall = function(options) {
 	var errorHandler = options.errorHandler || N.defaultAjaxErrorHandler;
 	var dataToSend = options.dataToSend || {};
 	var jsonToHtmlHandlers = options.jsonToHtmlHandlers || null;  //array of classes
+	var dataAgreements = options.dataAgreements || null;
 
 	$.ajax({
 		type: type,
@@ -22,13 +23,34 @@ N.Ajax.makeAjaxCall = function(options) {
 		data: dataToSend
 	})
 	.success(function(data) {
+		//if we have one or more agreements about what data was expected from the server,
+		//check to see that they have been met
+		if (dataAgreements && dataAgreements.length) {
+			var failedAgreements = [];
+
+			_.each(dataAgreements, function(dataAgreement) {
+				var agreementResult = N.Agreements.testAgreement(dataAgreement).doesAgreementPass;
+
+				if (!agreementResult) {
+					failedAgreements.push(dataAgreement.name);
+				}
+			});
+
+			if (failedAgreements.length) {
+				console.error('Agreements failed on JSON call!');
+				return;
+			}
+			else {
+				console.log('All agreements passed!');
+			}
+		}
+
 		if (successHandler) {
 			successHandler(data);
 		}
 
 		if (jsonToHtmlHandlers) {
 			for (var i=0; i<jsonToHtmlHandlers.length; i++) {
-
 				jsonToHtmlHandlers[i].execute(data);
 			}
 		}

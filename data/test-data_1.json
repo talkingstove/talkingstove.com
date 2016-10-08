@@ -5,27 +5,52 @@
 	     {
 	        "id": 0,
 	        "name": "Rabbit One",
-	        "image": "/images/rabbits/rabbit_001.jpg"
+	        "image": "/images/rabbits/rabbit_001.jpg",
+	        "mock": {
+	        	"alpha": [],
+	        	"beta": 3,
+	        	"gamma": "hello"
+	        }
 	    },
 	    {
 	        "id": 1,
 	        "name": "Rabbit Two",
-	        "image": "/images/rabbits/rabbit_002.jpg"
+	        "image": "/images/rabbits/rabbit_002.jpg",
+	        "mock": {
+	        	"alpha": [],
+	        	"beta": 3,
+	        	"gamma": "hello"
+	        }
 	    },
 	    {
 	        "id": 2,
 	        "name": "Rabbit Three",
-	        "image": "/images/rabbits/rabbit_003.jpg"
+	        "image": "/images/rabbits/rabbit_003.jpg",
+	        "mock": {
+	        	"alpha": [],
+	        	"beta": 3,
+	        	"gamma": "hello"
+	        }
 	    },
 	    {
 	        "id": 3,
 	        "name": "Rabbit Four",
-	        "image": "/images/rabbits/rabbit_004.jpg"
+	        "image": "/images/rabbits/rabbit_004.jpg",
+	        "mock": {
+	        	"alpha": [],
+	        	"beta": 3,
+	        	"gamma": "hello"
+	        }
 	    },
 	    {
 	        "id": 4,
 	        "name": "Rabbit Five",
-	        "image": "/images/rabbits/rabbit_005.jpg"
+	        "image": "/images/rabbits/rabbit_005.jpg",
+	        "mock": {
+	        	"alpha": [],
+	        	"beta": 3,
+	        	"gamma": "hello"
+	        }
 	    }
 	]
 }
