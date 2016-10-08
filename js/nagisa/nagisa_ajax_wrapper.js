@@ -25,7 +25,7 @@ N.Ajax.makeAjaxCall = function(options) {
 	.success(function(data) {
 		//if we have one or more agreements about what data was expected from the server,
 		//check to see that they have been met
-		if (dataAgreements && dataAgreements.length) {
+		if (dataAgreements && dataAgreements.length) { 
 			var failedAgreements = [];
 
 			_.each(dataAgreements, function(dataAgreement) {
