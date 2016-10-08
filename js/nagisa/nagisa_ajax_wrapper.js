@@ -29,7 +29,7 @@ N.Ajax.makeAjaxCall = function(options) {
 			var failedAgreements = [];
 
 			_.each(dataAgreements, function(dataAgreement) {
-				var agreementResult = N.Agreements.testAgreement(dataAgreement).doesAgreementPass;
+				var agreementResult = N.Agreements.testAgreement(dataAgreement, data).doesAgreementPass;
 
 				if (!agreementResult) {
 					failedAgreements.push(dataAgreement.name);

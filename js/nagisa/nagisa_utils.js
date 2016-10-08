@@ -6,7 +6,7 @@ N.Agreements.Library = {
 		'objectRoot': {
 			path: 'items',
 			dataType: 'array',
-			dataItemStructure: {
+			dataItemStructure: { //desired structure of one object in this array
         "id": "number",
         "name": "string",
         "image": "string",
@@ -24,13 +24,73 @@ N.Agreements.testAgreement = function(agreement, ajaxResult) {
 	var failureMessages = [];
 
 	//see if the main data object is where and what it should be
+	var rootObject = N.Utils.findObjectAttributeByName(ajaxResult, agreement.objectRoot.path);
+	var isRootObjectCorrectType = N.Utils.testDataType(rootObject, agreement.objectRoot.dataType);
 
+	if ( _.isUndefined(rootObject) || !isRootObjectCorrectType ) {
+		failureMessages.push('Root object not found at path' + agreement.objectRoot.path + 'or wrong data type');
 
+		return {
+			doesAgreementPass: !(failureMessages.length),
+			failureMessages: failureMessages
+		}
+	}
+
+	if (agreement.objectRoot.dataType === 'array' || agreement.objectRoot.dataType === 'object') {
+		var i = 0;
+
+		_.each(rootObject, function(rootObjectItem) { //test each one of the data set
+			testObjectStructure(rootObjectItem, agreement.objectRoot.dataItemStructure, i);
+			i++;
+		});	
+	}
+
+	console.log('failures:', failureMessages);
 
 	return {
 		doesAgreementPass: !(failureMessages.length),
 		failureMessages: failureMessages
 	}
+
+	//subfunction - called recursively if object
+	//TODO: test inside of arrays using mock-sub-objects
+	function testObjectStructure(objectToTest, structureToMatch, indexOfItemTested) {
+		_.each(structureToMatch, function(dataTypeToMatch, name) {
+			if ( _.isObject(dataTypeToMatch) ) { //an actual object, not the name of a data type like others!
+				if ( !objectToTest[name] ) { //check if subobje exists
+					failureMessages.push('Bad structure: cant find subobject ' + name);
+					return;
+				}
+
+				testObjectStructure(objectToTest[name], dataTypeToMatch, indexOfItemTested); //will this work on nested objs? maybe
+			}
+			else {
+				var result = N.Utils.testDataType(objectToTest[name], dataTypeToMatch);
+
+				if (!result) {
+					failureMessages.push('Bad structure: ' + objectToTest[name] + ' was expected to be: ' + dataTypeToMatch + ' in tested item ' + indexOfItemTested);
+				}
+			}
+		});
+	}
+}
+
+N.Utils.testDataType = function(dataToTest, dataTypeToMatch) {
+ switch (dataTypeToMatch) {
+ 	case 'string':
+ 		return _.isString(dataToTest);
+ 	break;
+ 	case 'array':
+ 		return _.isArray(dataToTest);
+ 	break;
+ 	case 'object':
+ 		return _.isObject(dataToTest);
+ 	break;
+ 	case 'number':
+ 		return _.isNumber(dataToTest);
+ 	break;
+ }
+
 }
 
 N.compileTemplate = function(templateName, data, callingMethod, templateLanguage) {
