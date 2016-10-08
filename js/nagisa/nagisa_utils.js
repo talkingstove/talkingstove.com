@@ -109,17 +109,17 @@ N.compileTemplate = function(templateName, data, callingMethod, templateLanguage
 			
 
 		}
-        else if (templateLanguage == 'jquery_tmpl') {
-            if (data) {
-                var templateResult =  $.tmpl($("#" + templateName).html(), data);
-            }
-            else {
-               // var templateResult =  _.template($("#" + templateName).html()); //without data, this returns a function, storing the template for later use in a variable
-            }
-        }
+    else if (templateLanguage == 'jquery_tmpl') {
+      if (data) {
+          var templateResult =  $.tmpl($("#" + templateName).html(), data);
+      }
+      else {
+         // var templateResult =  _.template($("#" + templateName).html()); //without data, this returns a function, storing the template for later use in a variable
+      }
+    }
 		//to do: add other deprecated templating languages as needed
 
-        return templateResult;
+    return templateResult;
 	}
 	catch(e) {
 		console.log('the following template error occurred', e);
