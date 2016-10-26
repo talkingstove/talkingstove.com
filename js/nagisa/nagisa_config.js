@@ -20,7 +20,9 @@ N.Classes.NBase = Fiber.extend(function(base) {
     // The `init` method serves as the constructor.
     init: function(params) {
         // Insert private functions here
-        console.log('NEW CLASS with params:', params);
+        console.log('NBASE with params:', params);
+
+        //TODO: add default attrs like unique id, class name etc
     },
     log: function(str) {
     	console.log(str);
@@ -41,6 +43,8 @@ N.Classes.NModel = N.Classes.NBase.extend(function(base) {
   return {
     // The `init` method serves as the constructor.
     init: function(params) {
+      base.init(params);
+      
       console.log('NEW model:', params);
       if (!params.name) {
         console.warn('Model needs a name');
@@ -99,7 +103,8 @@ N.Classes.NModel = N.Classes.NBase.extend(function(base) {
 N.Classes.NView = N.Classes.NBase.extend(function(base) {
   return {
     init: function(params) {
-      
+      base.init(params);
+
       console.log('NEW view:', params);
       this.$templateSelector = params.$templateSelector;
       this.$childTemplateSelector = params.$childTemplateSelector;
@@ -114,6 +119,7 @@ N.Classes.NView = N.Classes.NBase.extend(function(base) {
 N.Classes.JSONToHtmlDemo = N.Classes.NView.extend(function(base) {
   return {
     init: function(params) {
+      base.init(params);
       
       console.log('NEW N.Classes.JSONToHtmlDemo:', params);
       this.$templateSelector = 'test_json_template_parent';
