@@ -41,7 +41,6 @@ N.Classes.NModel = N.Classes.NBase.extend(function(base) {
   return {
     // The `init` method serves as the constructor.
     init: function(params) {
-      // Insert private functions here
       console.log('NEW model:', params);
       if (!params.name) {
         console.warn('Model needs a name');
@@ -53,7 +52,7 @@ N.Classes.NModel = N.Classes.NBase.extend(function(base) {
         N.Library.Models[params.name] = this;
       }
 
-      this.bindings = {};
+      this.bindings = params.bindings || {};
     },
 
     set: function(paramName, value, isSilent) {
@@ -86,6 +85,8 @@ N.Classes.NModel = N.Classes.NBase.extend(function(base) {
 
       this.bindings[paramName].selector = selector; //todo handle multi
 
+      //TODO: actually send out events so that only registered views listen to this selector
+
       //create reverse binding from dom to here
       //watch out for infinite loop!
       $(selector).on('change', function() {
@@ -97,15 +98,50 @@ N.Classes.NModel = N.Classes.NBase.extend(function(base) {
 
 N.Classes.NView = N.Classes.NBase.extend(function(base) {
   return {
-    // The `init` method serves as the constructor.
     init: function(params) {
-        // Insert private functions here
-        console.log('NEW view:', params);
+      
+      console.log('NEW view:', params);
+      this.$templateSelector = params.$templateSelector;
+      this.$childTemplateSelector = params.$childTemplateSelector;
     },
 
+    renderView: function(params) {
 
+    }
   }
 });
+
+N.Classes.JSONToHtmlDemo = N.Classes.NView.extend(function(base) {
+  return {
+    init: function(params) {
+      
+      console.log('NEW N.Classes.JSONToHtmlDemo:', params);
+      this.$templateSelector = 'test_json_template_parent';
+      this.$childTemplateSelector = 'test_json_template';
+      this.dataSource = params.dataSource;
+      this.$domTarget = params.$domTarget;
+      //this.$childrenContainer = $('ul');
+    },
+
+    renderView: function() {
+      var self = this;
+      var childrenHtml = '';
+ 
+      _.each(this.dataSource, function(dataItem) {
+        childrenHtml += N.compileTemplate(self.$childTemplateSelector, dataItem);
+      });
+
+      var parentHtml = N.compileTemplate(this.$templateSelector, {
+        listContents: childrenHtml
+      });
+
+      this.$domTarget.html( parentHtml );
+
+    }
+  }
+});
+
+
 
 
 

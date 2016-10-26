@@ -5,6 +5,7 @@ N.JsonToHtmlHandler = function(params) {
   this.customJsonHandler = params.customJsonHandler || null;
   this.afterCompleteCallback = params.afterCompleteCallback || null;
   this.contentPosition = params.contentPosition || 'append'; // prepend | apppend | replace
+  this.viewClass = params.viewClass || null;
 }
 
 N.JsonToHtmlHandler.prototype.execute = function(returnedJson) {
@@ -23,24 +24,35 @@ N.JsonToHtmlHandler.prototype.execute = function(returnedJson) {
       jsonArray = customJsonHandler(jsonArray);
   }
 
-  for (var i=0; i<jsonArray.length; i++) {
-      var thisJson = jsonArray[i];
-
-      var thisHtml = N.compileTemplate(this.templateName, thisJson);
-      allHtml += thisHtml;
-  }
-
   var $target = (this.domTarget == 'body') ? $('body') : $('#' + this.domTarget);
 
-  if (this.contentPosition == 'append') {
-      $target.append(allHtml);
+  if (this.viewClass) { //create instance and render a specified View class, eg N.Classes.NView
+    var view = new this.viewClass({
+      dataSource: jsonArray,
+      $domTarget: $target
+    });
+
+    view.renderView();
   }
-  else if (this.contentPosition == 'prepend') {
-      $target.prepend(allHtml);
+  else { //render just html
+    for (var i=0; i<jsonArray.length; i++) {
+        var thisJson = jsonArray[i];
+
+        var thisHtml = N.compileTemplate(this.templateName, thisJson);
+        allHtml += thisHtml;
+    }
+
+    if (this.contentPosition == 'append') {
+        $target.append(allHtml);
+    }
+    else if (this.contentPosition == 'prepend') {
+        $target.prepend(allHtml);
+    }
+    else if (this.contentPosition == 'replace') {
+        $target.html(allHtml);
+    }
   }
-  else if (this.contentPosition == 'replace') {
-      $target.html(allHtml);
-  }
+  
 
   //done adding, call after function
   if (this.afterCompleteCallback) {

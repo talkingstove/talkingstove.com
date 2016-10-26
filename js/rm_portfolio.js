@@ -54,14 +54,15 @@ RM.Portfolio.jsonToHtmlDemo = function() {
 	var sample_handler = new N.JsonToHtmlHandler({
 		dataPath: 'items',
 		domTarget: 'test_json_target',
-		templateName: 'test_json_template'
+		viewClass: N.Classes.JSONToHtmlDemo
+		// templateName: 'test_json_template'
 	});
 
 	/*
 	* in six lines we...
 	* make an ajax call and handle success or failure
 	* check the client/server agreement to make sure proper structure was returned or else highlight exact failure
-	* process successfully received data, put it into html form via templates, and add to DOM
+	* process successfully received data, put it into html form via templates and a View class, and add to DOM
 	*/
 	N.Ajax.makeAjaxCall({
 		type: 'GET',
