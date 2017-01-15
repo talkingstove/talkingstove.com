@@ -1,3 +1,6 @@
+N = N || {};
+Nagisa = N;
+
 var sample_handler = new N.JsonToHtmlHandler({
 	dataPath: 'items',
 	domTarget: 'body',

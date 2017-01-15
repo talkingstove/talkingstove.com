@@ -214,11 +214,11 @@
 
                 <p style="padding-bottom:40px; text-align: center">
 
-                    <a href="/downloads/nagisa_and_jumbotron_source.zip" class="button normal">Download source</a> 
+                    <a href="https://github.com/talkingstove/nagisa" class="button normal">Download source</a> 
 
                     <br/>
 
-                    Nagisa framework and Jumbotron component source [zip, work-in-progress, for sample purposes only]
+                    [work-in-progress, for sample purposes only]
 
                 </p>
 
@@ -622,26 +622,8 @@
     <script src="theme/js/justmotion.js"></script>
 
     <script src="/js/underscore.js"></script>
-    <script src="/js/nagisa/dependencies/fiber.min.js"></script>
-
-    
-
-    <script src="/js/nagisa/nagisa_namespace.js"></script>
-
-    <script src="/js/nagisa/nagisa_config.js"></script>
-
-    <script src="/js/nagisa/nagisa_library_model.js"></script>
-
-    
-
-    <script src="/js/nagisa/nagisa_utils.js"></script>
-
-    <script src="/js/nagisa/nagisa_init.js"></script>
-
-    <script src="/js/nagisa/nagisa_ajax_wrapper.js"></script>
-
-    <script src="/js/nagisa/nagisa_jsontohtmlhandler.js"></script>
-
+  
+    <script src="/js/nagisa.min.js"></script>
     <script src="/js/rm_portfolio.js"></script>
 
     <script src="/jumbotron/jumbotron.js"></script>
